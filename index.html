@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VueJS Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- text and the button -->
+    <div id="app">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Day 1:</h4>
+                <p>{{ message }}</p>
+                <p><b>Easy to learn?</b> {{ (val) > 0 ? ' Not sure for now !': ' Hope so !'}}</p>
+            </div>
+
+            <div class="col-md-8">
+                <h4>Day 2:</h4>
+                <p><input type="text" v-model="name" value="" placeholder="Enter your name" /></p>
+                <p>Your entered name is: {{name}}</p>
+                <p>Language List:</p>
+                <p>
+                    <div>
+                        <div v-for="lang in languages">
+                            <input type="checkbox" v-bind:value="lang.name" v-model="checkedLanguages">
+                            <label>{{lang.name}}</label>
+                        </div>
+                        <p>Selected languages: {{checkedLanguages}}</p>
+                        <p>Gender: <input type="radio" id="male" value="Male" v-model="picked">
+                            <label for="male">Male</label>&nbsp;&nbsp;<input type="radio" id="female" value="Female"
+                                v-model="picked">
+                            <label for="female">Female</label></p>
+                        <p><span>Picked Gender: {{ picked }}</span></p>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello World ! It's day 1 in Vue learning",
+            val: null,
+            name: '',
+            picked: '',
+            languages: [
+                { 'id': 1, 'name': 'Gujarati' },
+                { 'id': 2, 'name': 'English' },
+                { 'id': 3, 'name': 'Hindi' }
+            ],
+            checkedLanguages: []
+        }
+    })
+</script>
+
+</html>
